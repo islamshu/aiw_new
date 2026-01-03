@@ -1,0 +1,90 @@
+/* أنماط خاصة بتغيير اللغة */
+
+/* اتجاه النصوص */
+[dir="rtl"] {
+    text-align: right;
+}
+
+[dir="ltr"] {
+    text-align: left;
+}
+
+/* تعديلات للعناصر عند تغيير اللغة */
+[dir="rtl"] .nav-menu {
+    margin-right: 0;
+    margin-left: auto;
+}
+
+[dir="ltr"] .nav-menu {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+[dir="ltr"] .logo {
+    flex-direction: row-reverse;
+}
+
+[dir="ltr"] .nav-link i {
+    order: 1;
+}
+
+[dir="ltr"] .btn i {
+    order: 1;
+}
+
+[dir="rtl"] .floating-buttons {
+    left: auto;
+    right: 30px;
+}
+
+[dir="ltr"] .floating-buttons {
+    left: 30px;
+    right: auto;
+}
+
+[dir="rtl"] .footer-col h4::after {
+    right: 0;
+    left: auto;
+}
+
+[dir="ltr"] .footer-col h4::after {
+    left: 0;
+    right: auto;
+}
+
+[dir="rtl"] .footer-links a:hover {
+    transform: translateX(-5px);
+}
+
+[dir="ltr"] .footer-links a:hover {
+    transform: translateX(5px);
+}
+
+/* إصلاحات للغة الإنجليزية */
+[dir="ltr"] .feature-card,
+[dir="ltr"] .hero-content,
+[dir="ltr"] .cta-content {
+    text-align: center;
+}
+
+/* استثناءات خاصة بالاتجاه */
+[dir="ltr"] .hero .container {
+    flex-direction: row;
+}
+
+@media (max-width: 992px) {
+    [dir="ltr"] .hero .container {
+        flex-direction: column;
+    }
+}
+
+/* تعديلات القائمة للغة الإنجليزية */
+[dir="ltr"] .nav-menu.active {
+    left: 0;
+    right: auto;
+}
+
+/* تعديلات الفوتر */
+[dir="ltr"] .footer-logo {
+    flex-direction: row-reverse;
+}

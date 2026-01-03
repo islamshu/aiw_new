@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIW - من نحن</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0a192f;
+            --sky-blue: #00b4d8;
+            --pink: #ff5d8f;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        body[dir="ltr"] {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .slide-in-left.appear {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .slide-in-right.appear {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(to right, var(--sky-blue), var(--pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .nav-link-hover::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--sky-blue);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link-hover:hover::after {
+            width: 100%;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            border-color: var(--sky-blue);
+            box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+        }
+        
+        .step-number {
+            position: relative;
+        }
+        
+        .step-number::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 100%;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(to right, var(--sky-blue), var(--pink));
+            opacity: 0.3;
+        }
+        
+        @media (max-width: 768px) {
+            .step-number::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#0a192f] text-white">
+    <!-- شريط التنقل -->
+    <nav class="fixed top-0 w-full bg-[#0a192f]/95 backdrop-blur-sm z-50 py-4 border-b border-[#00b4d8]/10">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-gradient-to-br from-[#00b4d8] to-[#ff5d8f] rounded-lg flex items-center justify-center">
+                        <span class="font-bold text-xl">AIW</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-lg">Advanced Innovation Works</span>
+                        <span class="text-[#00b4d8] text-sm">Multi-Sector Investment & Operations Group</span>
+                    </div>
+                </a>
+                
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="index.html" class="nav-link-hover relative text-[#a8b2d1] hover:text-[#00b4d8] font-medium flex items-center gap-2">
+                        <i class="fas fa-home"></i>
+                        <span data-ar="الرئيسية" data-en="Home">الرئيسية</span>
+                    </a>
+                    <a href="about.html" class="nav-link-hover relative text-[#00b4d8] font-medium flex items-center gap-2">
+                        <i class="fas fa-users"></i>
+                        <span data-ar="من نحن" data-en="About Us">من نحن</span>
+                    </a>
+                    <a href="vision.html" class="nav-link-hover relative text-[#a8b2d1] hover:text-[#00b4d8] font-medium flex items-center gap-2">
+                        <i class="fas fa-eye"></i>
+                        <span data-ar="الرؤية" data-en="Vision">الرؤية</span>
+                    </a>
+                    <a href="strategy.html" class="nav-link-hover relative text-[#a8b2d1] hover:text-[#00b4d8] font-medium flex items-center gap-2">
+                        <i class="fas fa-chess-board"></i>
+                        <span data-ar="الإستراتيجية" data-en="Strategy">الإستراتيجية</span>
+                    </a>
+                    <a href="sectors.html" class="nav-link-hover relative text-[#a8b2d1] hover:text-[#00b4d8] font-medium flex items-center gap-2">
+                        <i class="fas fa-industry"></i>
+                        <span data-ar="القطاعات" data-en="Sectors">القطاعات</span>
+                    </a>
+                    <a href="contact.html" class="nav-link-hover relative text-[#a8b2d1] hover:text-[#00b4d8] font-medium flex items-center gap-2">
+                        <i class="fas fa-envelope"></i>
+                        <span data-ar="اتصل بنا" data-en="Contact">اتصل بنا</span>
+                    </a>
+                    
+                    <button id="languageToggle" class="bg-gradient-to-r from-[#00b4d8] to-[#ff5d8f] text-white px-4 py-2 rounded-full font-semibold flex items-center gap-2 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                        <i class="fas fa-globe"></i>
+                        <span class="lang-text" data-ar="English" data-en="العربية">English</span>
+                    </button>
+                </div>
+                
+                <button id="menuToggle" class="md:hidden text-white text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <div id="mobileMenu" class="md:hidden mt-4 hidden">
+                <div class="flex flex-col space-y-4 py-4">
+                    <a href="index.html" class="text-[#a8b2d1] hover:text-[#00b4d8] font-medium flex items-center gap-2 py-2 border-b border-[#112240]">
+                        <i class="fas fa-home"></i>
+                        <span data-ar="الرئيسية" data-en="Home">الرئيسية</span>
+                    </a>
+                    <a href="about.html" class="text-[#00b4d8] font-medium flex items-center gap-2 py-2 border-b border-[#112240]">
+                        <i class="fas fa-users"></i>
+                        <span data-ar="من نحن" data-en="About Us">من نحن</span>
+                    </a>
+                    <a href="vision.html" class="text-[#a8b2d1] hover:text-[#00b4d8] font-medium flex items-center gap-2 py-2 border-b border-[#112240]">
+                        <i class="fas fa-eye"></i>
+                        <span data-ar="الرؤية" data-en="Vision">الرؤية</span>
+                    </a>
+                    <a href="strategy.html" class="text-[#a8b2d1] hover:text-[#00b4d8] font-medium flex items-center gap-2 py-2 border-b border-[#112240]">
+                        <i class="fas fa-chess-board"></i>
+                        <span data-ar="الإستراتيجية" data-en="Strategy">الإستراتيجية</span>
+                    </a>
+                    <a href="sectors.html" class="text-[#a8b2d1] hover:text-[#00b4d8] font-medium flex items-center gap-2 py-2 border-b border-[#112240]">
+                        <i class="fas fa-industry"></i>
+                        <span data-ar="القطاعات" data-en="Sectors">القطاعات</span>
+                    </a>
+                    <a href="contact.html" class="text-[#a8b2d1] hover:text-[#00b4d8] font-medium flex items-center gap-2 py-2">
+                        <i class="fas fa-envelope"></i>
+                        <span data-ar="اتصل بنا" data-en="Contact">اتصل بنا</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- رأس الصفحة -->
+    <section class="pt-32 pb-20 bg-gradient-to-br from-[#0a192f] to-[#112240] relative overflow-hidden">
+        <div class="absolute inset-0 bg-radial-gradient at-30% from-[#00b4d8]/10 to-transparent"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 gradient-text fade-in" data-ar="من نحن؟" data-en="Who We Are">من نحن؟</h1>
+            <p class="text-xl text-[#a8b2d1] max-w-3xl mx-auto fade-in" data-ar="تعرف على مجموعة AIW ونموذج عملنا الفريد" data-en="Learn about AIW Group and our unique business model">
+                تعرف على مجموعة AIW ونموذج عملنا الفريد
+            </p>
+        </div>
+    </section>
+
+    <!-- محتوى الصفحة -->
+    <section class="py-20 bg-[#112240]">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row gap-12">
+                <!-- المحتوى الرئيسي -->
+                <div class="lg:w-2/3">
+                    <!-- بطاقة 1 -->
+                    <div class="bg-[#233554] rounded-2xl p-8 mb-8 card-hover fade-in">
+                        <h2 class="text-2xl md:text-3xl font-bold mb-6 relative pb-4" data-ar="AIW – Advanced Innovation Works" data-en="AIW – Advanced Innovation Works">
+                            AIW – Advanced Innovation Works
+                            <div class="absolute bottom-0 right-0 w-24 h-1 bg-gradient-to-r from-[#00b4d8] to-[#ff5d8f] rounded-full"></div>
+                        </h2>
+                        <p class="text-[#8892b0] mb-4" data-ar="AIW هي مجموعة أعمال تعمل وفق نموذج الاستثمار المصحوب بالتشغيل (Invest & Operate)، نركّز على تأسيس وتشغيل شركات متخصصة في قطاعات استراتيجية ذات نمو مرتفع." data-en="AIW is a business group operating under the Invest & Operate model. We focus on establishing and operating specialized companies in high-growth strategic sectors.">
+                            AIW هي مجموعة أعمال تعمل وفق نموذج الاستثمار المصحوب بالتشغيل (Invest & Operate)، نركّز على تأسيس وتشغيل شركات متخصصة في قطاعات استراتيجية ذات نمو مرتفع.
+                        </p>
+                        <p class="text-[#8892b0]" data-ar="نؤمن أن الاستثمار الحقيقي لا يكتمل بالتمويل وحده، بل يتحقق من خلال تشغيل فعّال، وبناء نماذج أعمال واضحة، وتوظيف التقنية والذكاء الاصطناعي لخلق شركات مستدامة وقابلة للتوسع." data-en="We believe that real investment is not complete with financing alone, but is achieved through effective operation, building clear business models, and employing technology and artificial intelligence to create sustainable and scalable companies.">
+                            نؤمن أن الاستثمار الحقيقي لا يكتمل بالتمويل وحده، بل يتحقق من خلال تشغيل فعّال، وبناء نماذج أعمال واضحة، وتوظيف التقنية والذكاء الاصطناعي لخلق شركات مستدامة وقابلة للتوسع.
+                        </p>
+                    </div>
+                    
+                    <!-- بطاقة 2 -->
+                    <div class="bg-[#233554] rounded-2xl p-8 card-hover fade-in" style="transition-delay: 0.2s;">
+                        <h2 class="text-2xl md:text-3xl font-bold mb-8 relative pb-4" data-ar="نموذج Invest & Operate" data-en="Invest & Operate Model">
+                            نموذج Invest & Operate
+                            <div class="absolute bottom-0 right-0 w-24 h-1 bg-gradient-to-r from-[#00b4d8] to-[#ff5d8f] rounded-full"></div>
+                        </h2>
+                        
+                        <div class="space-y-8">
+                            <!-- خطوة 1 -->
+                            <div class="flex items-start gap-6">
+                                <div class="step-number">
+                                    <div class="w-14 h-14 bg-gradient-to-br from-[#00b4d8] to-[#ff5d8f] rounded-full flex items-center justify-center text-white font-bold text-xl flex-shrink-0">
+                                        1
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white mb-2" data-ar="التمويل الاستثماري" data-en="Investment Financing">التمويل الاستثماري</h3>
+                                    <p class="text-[#8892b0]" data-ar="تقديم رأس المال اللازم لتأسيس وتطوير الشركات الناشئة في قطاعات واعدة" data-en="Providing the necessary capital to establish and develop startups in promising sectors">
+                                        تقديم رأس المال اللازم لتأسيس وتطوير الشركات الناشئة في قطاعات واعدة
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- خطوة 2 -->
+                            <div class="flex items-start gap-6">
+                                <div class="step-number">
+                                    <div class="w-14 h-14 bg-gradient-to-br from-[#00b4d8] to-[#ff5d8f] rounded-full flex items-center justify-center text-white font-bold text-xl flex-shrink-0">
+                                        2
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white mb-2" data-ar="المشاركة التشغيلية" data-en="Operational Participation">المشاركة التشغيلية</h3>
+                                    <p class="text-[#8892b0]" data-ar="المشاركة الفعلية في إدارة وتشغيل الشركات وليس فقط التمويل" data-en="Actual participation in managing and operating companies, not just financing">
+                                        المشاركة الفعلية في إدارة وتشغيل الشركات وليس فقط التمويل
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- خطوة 3 -->
+                            <div class="flex items-start gap-6">
+                                <div class="step-number">
+                                    <div class="w-14 h-14 bg-gradient-to-br from-[#00b4d8] to-[#ff5d8f] rounded-full flex items-center justify-center text-white font-bold text-xl flex-shrink-0">
+                                        3
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white mb-2" data-ar="بناء القدرات" data-en="Capacity Building">بناء القدرات</h3>
+                                    <p class="text-[#8892b0]" data-ar="تطوير الفرق والأنظمة والعمليات لضمان النمو المستدام" data-en="Developing teams, systems and processes to ensure sustainable growth">
+                                        تطوير الفرق والأنظمة والعمليات لضمان النمو المستدام
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- خطوة 4 -->
+                            <div class="flex items-start gap-6">
+                                <div class="step-number">
+                                    <div class="w-14 h-14 bg-gradient-to-br from-[#00b4d8] to-[#ff5d8f] rounded-full flex items-center justify-center text-white font-bold text-xl flex-shrink-0">
+                                        4
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white mb-2" data-ar="التوسع والنضج" data-en="Expansion & Maturation">التوسع والنضج</h3>
+                                    <p class="text-[#8892b0]" data-ar="توسيع نطاق الأعمال وبناء شركات ناضجة وقابلة للاستمرارية" data-en="Expanding business scope and building mature, sustainable companies">
+                                        توسيع نطاق الأعمال وبناء شركات ناضجة وقابلة للاستمرارية
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- الشريط الجانبي -->
+                <div class="lg:w-1/3">
+                    <!-- بطاقة القيم -->
+                    <div class="bg-[#233554] rounded-2xl p-6 mb-8 card-hover slide-in-right">
+                        <h3 class="text-xl font-bold mb-6 relative pb-3" data-ar="قيمنا الأساسية" data-en="Our Core Values">
+                            قيمنا الأساسية
+                            <div class="absolute bottom-0 right-0 w-16 h-1 bg-gradient-to-r from-[#00b4d8] to-[#ff5d8f] rounded-full"></div>
+                        </h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-bullseye text-[#00b4d8]"></i>
+                                <span class="text-[#a8b2d1]" data-ar="الابتكار والتجديد" data-en="Innovation & Renewal">الابتكار والتجديد</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-handshake text-[#ff5d8f]"></i>
+                                <span class="text-[#a8b2d1]" data-ar="الشراكة الفعالة" data-en="Effective Partnership">الشراكة الفعالة</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-chart-line text-[#00b4d8]"></i>
+                                <span class="text-[#a8b2d1]" data-ar="النمو المستدام" data-en="Sustainable Growth">النمو المستدام</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-shield-alt text-[#ff5d8f]"></i>
+                                <span class="text-[#a8b2d1]" data-ar="الحوكمة الرشيدة" data-en="Sound Governance">الحوكمة الرشيدة</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-users text-[#00b4d8]"></i>
+                                <span class="text-[#a8b2d1]" data-ar="تمكين الفريق" data-en="Team Empowerment">تمكين الفريق</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- بطاقة الإحصائيات -->
+                    <div class="bg-[#233554] rounded-2xl p-6 card-hover slide-in-right" style="transition-delay: 0.2s;">
+                        <h3 class="text-xl font-bold mb-6 relative pb-3" data-ar="إحصائياتنا" data-en="Our Statistics">
+                            إحصائياتنا
+                            <div class="absolute bottom-0 right-0 w-16 h-1 bg-gradient-to-r from-[#00b4d8] to-[#ff5d8f] rounded-full"></div>
+                        </h3>
+                        <div class="space-y-6">
+                            <div class="text-center">
+                                <div class="text-4xl font-bold gradient-text mb-2">15+</div>
+                                <div class="text-[#8892b0]" data-ar="شركة قيد التشغيل" data-en="Companies in Operation">شركة قيد التشغيل</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-4xl font-bold gradient-text mb-2">6</div>
+                                <div class="text-[#8892b0]" data-ar="قطاعات استراتيجية" data-en="Strategic Sectors">قطاعات استراتيجية</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-4xl font-bold gradient-text mb-2">95%</div>
+                                <div class="text-[#8892b0]" data-ar="معدل نجاح المشاريع" data-en="Project Success Rate">معدل نجاح المشاريع</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer class="bg-[#0a192f] pt-16 pb-8 border-t border-[#00b4d8]/10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-[#00b4d8] to-[#ff5d8f] rounded-lg flex items-center justify-center">
+                            <span class="font-bold text-xl">AIW</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Advanced Innovation Works</h3>
+                            <p class="text-[#00b4d8] text-sm">Multi-Sector Investment & Operations Group</p>
+                        </div>
+                    </div>
+                    <p class="text-[#8892b0]" data-ar="مجموعة أعمال تعمل وفق نموذج الاستثمار المصحوب بالتشغيل في قطاعات استراتيجية متنوعة" data-en="A business group operating under the Invest & Operate model in various strategic sectors">
+                        مجموعة أعمال تعمل وفق نموذج الاستثمار المصحوب بالتشغيل في قطاعات استراتيجية متنوعة
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-6 relative pb-3" data-ar="روابط سريعة" data-en="Quick Links">
+                        روابط سريعة
+                        <div class="absolute bottom-0 right-0 w-12 h-1 bg-gradient-to-r from-[#00b4d8] to-[#ff5d8f] rounded-full"></div>
+                    </h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-[#8892b0] hover:text-[#00b4d8] transition-colors duration-300 flex items-center gap-2" data-ar="الرئيسية" data-en="Home"><i class="fas fa-arrow-left text-xs"></i> الرئيسية</a></li>
+                        <li><a href="about.html" class="text-[#00b4d8] font-medium flex items-center gap-2" data-ar="من نحن" data-en="About Us"><i class="fas fa-arrow-left text-xs"></i> من نحن</a></li>
+                        <li><a href="vision.html" class="text-[#8892b0] hover:text-[#00b4d8] transition-colors duration-300 flex items-center gap-2" data-ar="الرؤية" data-en="Vision"><i class="fas fa-arrow-left text-xs"></i> الرؤية</a></li>
+                        <li><a href="strategy.html" class="text-[#8892b0] hover:text-[#00b4d8] transition-colors duration-300 flex items-center gap-2" data-ar="الإستراتيجية" data-en="Strategy"><i class="fas fa-arrow-left text-xs"></i> الإستراتيجية</a></li>
+                        <li><a href="sectors.html" class="text-[#8892b0] hover:text-[#00b4d8] transition-colors duration-300 flex items-center gap-2" data-ar="القطاعات" data-en="Sectors"><i class="fas fa-arrow-left text-xs"></i> القطاعات</a></li>
+                        <li><a href="contact.html" class="text-[#8892b0] hover:text-[#00b4d8] transition-colors duration-300 flex items-center gap-2" data-ar="اتصل بنا" data-en="Contact"><i class="fas fa-arrow-left text-xs"></i> اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-6 relative pb-3" data-ar="اتصل بنا" data-en="Contact Us">
+                        اتصل بنا
+                        <div class="absolute bottom-0 right-0 w-12 h-1 bg-gradient-to-r from-[#00b4d8] to-[#ff5d8f] rounded-full"></div>
+                    </h4>
+                    <ul class="space-y-4 mb-6">
+                        <li class="flex items-center gap-3 text-[#8892b0]">
+                            <i class="fas fa-map-marker-alt text-[#00b4d8]"></i>
+                            <span data-ar="الرياض، المملكة العربية السعودية" data-en="Riyadh, Saudi Arabia">الرياض، المملكة العربية السعودية</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-[#8892b0]">
+                            <i class="fas fa-envelope text-[#00b4d8]"></i>
+                            <span>info@aiw-group.com</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-[#8892b0]">
+                            <i class="fas fa-phone text-[#00b4d8]"></i>
+                            <span>+966 11 123 4567</span>
+                        </li>
+                    </ul>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-[#233554] rounded-full flex items-center justify-center text-white hover:bg-gradient-to-r hover:from-[#00b4d8] hover:to-[#ff5d8f] transition-all duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-[#233554] rounded-full flex items-center justify-center text-white hover:bg-gradient-to-r hover:from-[#00b4d8] hover:to-[#ff5d8f] transition-all duration-300">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-[#233554] rounded-full flex items-center justify-center text-white hover:bg-gradient-to-r hover:from-[#00b4d8] hover:to-[#ff5d8f] transition-all duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-[#233554] rounded-full flex items-center justify-center text-white hover:bg-gradient-to-r hover:from-[#00b4d8] hover:to-[#ff5d8f] transition-all duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-[#8892b0] text-sm">
+                    &copy; <span data-ar="2023 AIW Group. جميع الحقوق محفوظة." data-en="2023 AIW Group. All rights reserved.">2023 AIW Group. جميع الحقوق محفوظة.</span>
+                </p>
+                <p class="text-[#00b4d8] text-sm" data-ar="ملف بروفايل الشركات متعدد الأنشطة – النسخة الاستراتيجية" data-en="Multi-Activity Company Profile – Strategic Version">
+                    ملف بروفايل الشركات متعدد الأنشطة – النسخة الاستراتيجية
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- الأزرار العائمة -->
+    <div class="fixed bottom-8 left-8 z-40 flex flex-col gap-4">
+        <button id="scrollTop" class="w-12 h-12 bg-gradient-to-br from-[#00b4d8] to-[#ff5d8f] rounded-full text-white shadow-lg flex items-center justify-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        <button id="languageFloat" class="w-12 h-12 bg-gradient-to-br from-[#ff5d8f] to-[#ff97b7] rounded-full text-white shadow-lg flex items-center justify-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <i class="fas fa-language"></i>
+        </button>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/language-switcher.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0a192f',
+                        'sky-blue': '#00b4d8',
+                        pink: '#ff5d8f',
+                        'light-navy': '#112240',
+                        'lightest-navy': '#233554',
+                        slate: '#8892b0',
+                        'light-slate': '#a8b2d1',
+                        'lightest-slate': '#ccd6f6',
+                        white: '#e6f1ff'
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

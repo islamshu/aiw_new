@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIW - اتصل بنا</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0a192f;
+            --sky-blue: #00b4d8;
+            --pink: #ff5d8f;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        body[dir="ltr"] {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .slide-in-left.appear {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .slide-in-right.appear {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(to right, var(--sky-blue), var(--pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .nav-link-hover::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--sky-blue);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link-hover:hover::after {
+            width: 100%;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            border-color: var(--sky-blue);
+            box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+        }
+        
+        .contact-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-input:focus {
+            outline: none;
+            border-color: var(--sky-blue);
+            box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.1);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .map-container {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(10, 25, 47, 0.8) 0%, rgba(0, 180, 216, 0.2) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .pulse-contact {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .floating-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body class="bg-[#0a192f] text-white">
+    <!-- شريط التنقل -->
+    <nav class="fixed top-0 w-full bg-[#0a192f]/95 backdrop-blur-sm z-50 py-4 border-b border-[#00b4d8]/10">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-gradient-to-br from-[#00b4d8] to-[#ff5d8f] rounded-lg flex items-center justify-center">
+                        <span class="font-bold text-xl">AIW</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-lg">Advanced Innovation Works</span>
+                        <span class="text-[#00b4d8] text-sm">Multi-Sector Investment & Operations Group</span>
+                    </div>
+                </a>
+                
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="index.html" class="nav-link-hover relative text-[#a8b2d1] hover:text-[#00b4d8] font-medium flex items-center gap-2">
+                        <i class="fas fa-home"></i>
+                        <span data-ar="الرئيسية" data-en="Home">الرئيسية</span>
+                    </a>
+                    <a href="about.html" class="nav-link-hover relative text-[#a8b2d1] hover:text-[#00b4d8] font-medium flex items-center gap-2">
+                        <i class="fas fa-users"></i>
+                        <span data-ar="من نحن" data-en="About Us">من نحن</span>
+                    </a>
+                    <a href="vision.html" class="nav-link-hover relative text-[#a8b2d1] hover:text-[#00b4d8] font-medium flex items-center gap-2">
+                        <i class="fas fa-eye"></i>
+                        <span data-ar="الرؤية" data-en="Vision">الرؤية</span>
+                    </a>
+                    <a href="strategy.html" class="nav-link-hover relative text-[#a8b2d1] hover:text-[#00b4d8] font-medium flex items-center gap-2">
+                        <i class="fas fa-chess-board"></i>
+                        <span data-ar="الإستراتيجية" data-en="Strategy">الإستراتيجية</span>
+                    </a>
+                    <a href="sectors.html" class="nav-link-hover relative text-[#a8b2d1] hover:text-[#00b4d8] font-medium flex items-center gap-2">
+                        <i class="fas fa-industry"></i>
+                        <span data-ar="القطاعات" data-en="Sectors">القطاعات</span>
+                    </a>
+                    <a href="contact.html" class="nav-link-hover relative text-[#00b4d8] font-medium flex items-center gap-2">
+                        <i class="fas fa-envelope"></i>
+                        <span data-ar="اتصل بنا" data-en="Contact">اتصل بنا</span>
+                    </a>
+                    
+                    <button id="languageToggle" class="bg-gradient-to-r from-[#00b4d8] to-[#ff5d8f] text-white px-4 py-2 rounded-full font-semibold flex items-center gap-2 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                        <i class="fas fa-globe"></i>
+                        <span class="lang-text" data-ar="English" data-en="العربية">English</span>
+                    </button>
+                </div>
+                
+                <button id="menuToggle" class="md:hidden text-white text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <div id="mobileMenu" class="md:hidden mt-4 hidden">
+                <div class="flex flex-col space-y-4 py-4">
+                    <a href="index.html" class="text-[#a8b2d1] hover:text-[#00b4d8] font-medium flex items-center gap-2 py-2 border-b border-[#112240]">
+                        <i class="fas fa-home"></i>
+                        <span data-ar="الرئيسية" data-en="Home">الرئيسية</span>
+                    </a>
+                    <a href="about.html" class="text-[#a8b2d1] hover:text-[#00b4d8] font-medium flex items-center gap-2 py-2 border-b border-[#112240]">
+                        <i class="fas fa-users"></i>
+                        <span data-ar="من نحن" data-en="About Us">من نحن</span>
+                    </a>
+                    <a href="vision.html" class="text-[#a8b2d1] hover:text-[#00b4d8] font-medium flex items-center gap-2 py-2 border-b border-[#112240]">
+                        <i class="fas fa-eye"></i>
+                        <span data-ar="الرؤية" data-en="Vision">الرؤية</span>
+                    </a>
+                    <a href="strategy.html" class="text-[#a8b2d1] hover:text-[#00b4d8] font-medium flex items-center gap-2 py-2 border-b border-[#112240]">
+                        <i class="fas fa-chess-board"></i>
+                        <span data-ar="الإستراتيجية" data-en="Strategy">الإستراتيجية</span>
+                    </a>
+                    <a href="sectors.html" class="text-[#a8b2d1] hover:text-[#00b4d8] font-medium flex items-center gap-2 py-2 border-b border-[#112240]">
+                        <i class="fas fa-industry"></i>
+                        <span data-ar="القطاعات" data-en="Sectors">القطاعات</span>
+                    </a>
+                    <a href="contact.html" class="text-[#00b4d8] font-medium flex items-center gap-2 py-2">
+                        <i class="fas fa-envelope"></i>
+                        <span data-ar="اتصل بنا" data-en="Contact">اتصل بنا</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- رأس الصفحة -->
+    <section class="pt-32 pb-20 bg-gradient-to-br from-[#0a192f] to-[#112240] relative overflow-hidden">
+        <div class="absolute inset-0 bg-radial-gradient at-30% from-[#00b4d8]/10 to-transparent"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 gradient-text fade-in" data-ar="اتصل بنا" data-en="Contact Us">اتصل بنا</h1>
+            <p class="text-xl text-[#a8b2d1] max-w-3xl mx-auto fade-in" data-ar="نرحب بفرص الشراكة والاستثمار مع المؤسسات والرواد في مختلف القطاعات" data-en="We welcome partnership and investment opportunities with institutions and pioneers in various sectors">
+                نرحب بفرص الشراكة والاستثمار مع المؤسسات والرواد في مختلف القطاعات
+            </p>
+        </div>
+    </section>
+
+    <!-- معلومات الاتصال -->
+    <section class="py-20 bg-[#112240]">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- معلومات التواصل -->
+                <div class="slide-in-left">
+                    <div class="bg-[#233554] rounded-2xl p-8 card-hover">
+                        <h2 class="text-2xl md:text-3xl font-bold mb-8 gradient-text" data-ar="معلومات التواصل" data-en="Contact Information">معلومات التواصل</h2>
+                        
+                        <div class="space-y-8">
+                            <!-- المقر الرئيسي -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-14 h-14 bg-gradient-to-br from-[#00b4d8] to-[#ff5d8f] rounded-xl flex items-center justify-center flex-shrink-0 floating-icon">
+                                    <i class="fas fa-building text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white mb-2" data-ar="المقر الرئيسي" data-en="Headquarters">المقر الرئيسي</h3>
+                                    <p class="text-[#8892b0]" data-ar="الرياض، المملكة العربية السعودية - حي المالية، برج الأعمال، الطابق 12" data-en="Riyadh, Saudi Arabia - Financial District, Business Tower, 12th Floor">
+                                        الرياض، المملكة العربية السعودية - حي المالية، برج الأعمال، الطابق 12
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- البريد الإلكتروني -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-14 h-14 bg-gradient-to-br from-[#00b4d8] to-[#ff5d8f] rounded-xl flex items-center justify-center flex-shrink-0 floating-icon" style="animation-delay: 0.5s;">
+                                    <i class="fas fa-envelope text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white mb-2" data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</h3>
+                                    <p class="text-[#8892b0] mb-1">info@aiw-group.com</p>
+                                    <p class="text-[#8892b0]">partnerships@aiw-group.com</p>
+                                </div>
+                            </div>
+                            
+                            <!-- الهاتف -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-14 h-14 bg-gradient-to-br from-[#00b4d8] to-[#ff5d8f] rounded-xl flex items-center justify-center flex-shrink-0 floating-icon" style="animation-delay: 1s;">
+                                    <i class="fas fa-phone text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white mb-2" data-ar="هاتف الاتصال" data-en="Phone">هاتف الاتصال</h3>
+                                    <p class="text-[#8892b0] mb-1">+966 11 123 4567</p>
+                                    <p class="text-[#8892b0]">+966 50 123 4567 (للاستثمار)</p>
+                                </div>
+                            </div>
+                            
+                            <!-- ساعات العمل -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-14 h-14 bg-gradient-to-br from-[#00b4d8] to-[#ff5d8f] rounded-xl flex items-center justify-center flex-shrink-0 floating-icon" style="animation-delay: 1.5s;">
+                                    <i class="fas fa-clock text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white mb-2" data-ar="ساعات العمل" data-en="Working Hours">ساعات العمل</h3>
+                                    <p class="text-[#8892b0]" data-ar="الأحد - الخميس: 8:00 ص - 5:00 م" data-en="Sunday - Thursday: 8:00 AM - 5:00 PM">
+                                        الأحد - الخميس: 8:00 ص - 5:00 م
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- وسائل التواصل الاجتماعي -->
+                        <div class="mt-12 pt-8 border-t border-[#8892b0]/20">
+                            <h3 class="text-xl font-bold text-white mb-6" data-ar="تابعنا على" data-en="Follow Us">تابعنا على</h3>
+                            <div class="flex gap-4">
+                                <a href="#" class="w-12 h-12 bg-[#0a192f] rounded-full flex items-center justify-center text-white hover:bg-gradient-to-r hover:from-[#00b4d8] hover:to-[#ff5d8f] transition-all duration-300">
+                                    <i class="fab fa-twitter text-xl"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 bg-[#0a192f] rounded-full flex items-center justify-center text-white hover:bg-gradient-to-r hover:from-[#00b4d8] hover:to-[#ff5d8f] transition-all duration-300">
+                                    <i class="fab fa-linkedin-in text-xl"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 bg-[#0a192f] rounded-full flex items-center justify-center text-white hover:bg-gradient-to-r hover:from-[#00b4d8] hover:to-[#ff5d8f] transition-all duration-300">
+                                    <i class="fab fa-instagram text-xl"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 bg-[#0a192f] rounded-full flex items-center justify-center text-white hover:bg-gradient-to-r hover:from-[#00b4d8] hover:to-[#ff5d8f] transition-all duration-300">
+                                    <i class="fab fa-youtube text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- نموذج الاتصال -->
+                <div class="slide-in-right">
+                    <div class="bg-[#233554] rounded-2xl p-8 card-hover">
+                        <h2 class="text-2xl md:text-3xl font-bold mb-8 gradient-text" data-ar="أرسل لنا رسالة" data-en="Send Us a Message">أرسل لنا رسالة</h2>
+                        
+                        <form id="contactForm" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-[#a8b2d1] mb-2 font-medium" data-ar="الاسم الكامل" data-en="Full Name">الاسم الكامل</label>
+                                    <input type="text" required class="w-full p-3 contact-input rounded-lg text-white">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-[#a8b2d1] mb-2 font-medium" data-ar="البريد الإلكتروني" data-en="Email Address">البريد الإلكتروني</label>
+                                    <input type="email" required class="w-full p-3 contact-input rounded-lg text-white">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-[#a8b2d1] mb-2 font-medium" data-ar="الشركة" data-en="Company">الشركة</label>
+                                <input type="text" class="w-full p-3 contact-input rounded-lg text-white">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-[#a8b2d1] mb-2 font-medium" data-ar="نوع الاستفسار" data-en="Inquiry Type">نوع الاستفسار</label>
+                                <select class="w-full p-3 contact-input rounded-lg text-white">
+                                    <option value="" data-ar="اختر نوع الاستفسار" data-en="Select Inquiry Type">اختر نوع الاستفسار</option>
+                                    <option value="partnership" data-ar="شراكة استراتيجية" data-en="Strategic Partnership">شراكة استراتيجية</option>
+                                    <option value="investment" data-ar="فرص استثمارية" data-en="Investment Opportunities">فرص استثمارية</option>
+                                    <option value="career" data-ar="الوظائف والمسيرة المهنية" data-en="Careers & Professional Path">الوظائف والمسيرة المهنية</option>
+                                    <option value="media" data-ar="الاستفسارات الإعلامية" data-en="Media Inquiries">الاستفسارات الإعلامية</option>
+                                    <option value="other" data-ar="استفسار عام" data-en="General Inquiry">استفسار عام</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-[#a8b2d1] mb-2 font-medium" data-ar="الرسالة" data-en="Message">الرسالة</label>
+                                <textarea rows="5" required class="w-full p-3 contact-input rounded-lg text-white"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-gradient-to-r from-[#00b4d8] to-[#ff5d8f] text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 pulse-contact" data-ar="إرسال الرسالة" data-en="Send Message">
+                                إرسال الرسالة <i class="fas fa-paper-plane mr-2"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الخريطة -->
+    <section class="py-20 bg-[#0a192f]">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text fade-in" data-ar="موقعنا على الخريطة" data-en="Our Location on Map">موقعنا على الخريطة</h2>
+            
+            <div class="map-container h-96 card-hover">
+                <!-- خريطة رمزية -->
+                <div class="w-full h-full bg-gradient-to-br from-[#0a192f] to-[#112240] relative">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-gradient-to-br from-[#00b4d8] to-[#ff5d8f] rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-map-marker-alt text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2" data-ar="المقر الرئيسي - الرياض" data-en="Headquarters - Riyadh">المقر الرئيسي - الرياض</h3>
+                            <p class="text-[#a8b2d1]" data-ar="حي المالية، برج الأعمال، الطابق 12" data-en="Financial District, Business Tower, 12th Floor">
+                                حي المالية، برج الأعمال، الطابق 12
+                            </p>
+                        </div>
+                    </div>
+                    <div class="map-overlay">
+                        <div class="text-center p-8">
+                            <div class="w-16 h-16 bg-gradient-to-br from-[#00b4d8] to-[#ff5d8f] rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-location-dot text-white text-xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-white mb-2" data-ar="زيارتنا" data-en="Visit Us">زيارتنا</h4>
+                            <p class="text-[#a8b2d1]" data-ar="نرحب بزيارتكم في مقرنا الرئيسي بعد تحديد موعد مسبق" data-en="We welcome your visit to our headquarters with a prior appointment">
+                                نرحب بزيارتكم في مقرنا الرئيسي بعد تحديد موعد مسبق
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- فريق الاتصال -->
+    <section class="py-20 bg-[#112240]">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 gradient-text fade-in" data-ar="فريق الاتصال" data-en="Contact Team">فريق الاتصال</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- شخص 1 -->
+                <div class="text-center fade-in">
+                    <div class="w-32 h-32 bg-gradient-to-br from-[#00b4d8] to-[#ff5d8f] rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-user-tie text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2" data-ar="أحمد السعيد" data-en="Ahmed Al-Saeed">أحمد السعيد</h3>
+                    <p class="text-[#00b4d8] mb-4" data-ar="نائب الرئيس للاستثمار" data-en="Vice President of Investment">نائب الرئيس للاستثمار</p>
+                    <p class="text-[#8892b0]" data-ar="لمناقشة فرص الاستثمار والشراكات" data-en="For discussing investment opportunities and partnerships">
+                        لمناقشة فرص الاستثمار والشراكات
+                    </p>
+                </div>
+                
+                <!-- شخص 2 -->
+                <div class="text-center fade-in" style="transition-delay: 0.2s;">
+                    <div class="w-32 h-32 bg-gradient-to-br from-[#00b4d8] to-[#ff5d8f] rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-headset text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2" data-ar="سارة القحطاني" data-en="Sara Al-Qahtani">سارة القحطاني</h3>
+                    <p class="text-[#00b4d8] mb-4" data-ar="مديرة علاقات الشركاء" data-en="Partnership Relations Director">مديرة علاقات الشركاء</p>
+                    <p class="text-[#8892b0]" data-ar="للاستفسارات العامة وتنسيق الاجتماعات" data-en="For general inquiries and meeting coordination">
+                        للاستفسارات العامة وتنسيق الاجتماعات
+                    </p>
+                </div>
+                
+                <!-- شخص 3 -->
+                <div class="text-center fade-in" style="transition-delay: 0.4s;">
+                    <div class="w-32 h-32 bg-gradient-to-br from-[#00b4d8] to-[#ff5d8f] rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-bullhorn text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2" data-ar="محمد الشمري" data-en="Mohammed Al-Shammari">محمد الشمري</h3>
+                    <p class="text-[#00b4d8] mb-4" data-ar="مدير الاتصالات والإعلام" data-en="Communications & Media Director">مدير الاتصالات والإعلام</p>
+                    <p class="text-[#8892b0]" data-ar="للاستفسارات الإعلامية وطلبات البيانات الصحفية" data-en="For media inquiries and press release requests">
+                        للاستفسارات الإعلامية وطلبات البيانات الصحفية
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer class="bg-[#0a192f] pt-16 pb-8 border-t border-[#00b4d8]/10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-[#00b4d8] to-[#ff5d8f] rounded-lg flex items-center justify-center">
+                            <span class="font-bold text-xl">AIW</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Advanced Innovation Works</h3>
+                            <p class="text-[#00b4d8] text-sm">Multi-Sector Investment & Operations Group</p>
+                        </div>
+                    </div>
+                    <p class="text-[#8892b0]" data-ar="مجموعة أعمال تعمل وفق نموذج الاستثمار المصحوب بالتشغيل في قطاعات استراتيجية متنوعة" data-en="A business group operating under the Invest & Operate model in various strategic sectors">
+                        مجموعة أعمال تعمل وفق نموذج الاستثمار المصحوب بالتشغيل في قطاعات استراتيجية متنوعة
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-6 relative pb-3" data-ar="روابط سريعة" data-en="Quick Links">
+                        روابط سريعة
+                        <div class="absolute bottom-0 right-0 w-12 h-1 bg-gradient-to-r from-[#00b4d8] to-[#ff5d8f] rounded-full"></div>
+                    </h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-[#8892b0] hover:text-[#00b4d8] transition-colors duration-300 flex items-center gap-2" data-ar="الرئيسية" data-en="Home"><i class="fas fa-arrow-left text-xs"></i> الرئيسية</a></li>
+                        <li><a href="about.html" class="text-[#8892b0] hover:text-[#00b4d8] transition-colors duration-300 flex items-center gap-2" data-ar="من نحن" data-en="About Us"><i class="fas fa-arrow-left text-xs"></i> من نحن</a></li>
+                        <li><a href="vision.html" class="text-[#8892b0] hover:text-[#00b4d8] transition-colors duration-300 flex items-center gap-2" data-ar="الرؤية" data-en="Vision"><i class="fas fa-arrow-left text-xs"></i> الرؤية</a></li>
+                        <li><a href="strategy.html" class="text-[#8892b0] hover:text-[#00b4d8] transition-colors duration-300 flex items-center gap-2" data-ar="الإستراتيجية" data-en="Strategy"><i class="fas fa-arrow-left text-xs"></i> الإستراتيجية</a></li>
+                        <li><a href="sectors.html" class="text-[#8892b0] hover:text-[#00b4d8] transition-colors duration-300 flex items-center gap-2" data-ar="القطاعات" data-en="Sectors"><i class="fas fa-arrow-left text-xs"></i> القطاعات</a></li>
+                        <li><a href="contact.html" class="text-[#00b4d8] font-medium flex items-center gap-2" data-ar="اتصل بنا" data-en="Contact"><i class="fas fa-arrow-left text-xs"></i> اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-6 relative pb-3" data-ar="اتصل بنا" data-en="Contact Us">
+                        اتصل بنا
+                        <div class="absolute bottom-0 right-0 w-12 h-1 bg-gradient-to-r from-[#00b4d8] to-[#ff5d8f] rounded-full"></div>
+                    </h4>
+                    <ul class="space-y-4 mb-6">
+                        <li class="flex items-center gap-3 text-[#8892b0]">
+                            <i class="fas fa-map-marker-alt text-[#00b4d8]"></i>
+                            <span data-ar="الرياض، المملكة العربية السعودية" data-en="Riyadh, Saudi Arabia">الرياض، المملكة العربية السعودية</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-[#8892b0]">
+                            <i class="fas fa-envelope text-[#00b4d8]"></i>
+                            <span>info@aiw-group.com</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-[#8892b0]">
+                            <i class="fas fa-phone text-[#00b4d8]"></i>
+                            <span>+966 11 123 4567</span>
+                        </li>
+                    </ul>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-[#233554] rounded-full flex items-center justify-center text-white hover:bg-gradient-to-r hover:from-[#00b4d8] hover:to-[#ff5d8f] transition-all duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-[#233554] rounded-full flex items-center justify-center text-white hover:bg-gradient-to-r hover:from-[#00b4d8] hover:to-[#ff5d8f] transition-all duration-300">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-[#233554] rounded-full flex items-center justify-center text-white hover:bg-gradient-to-r hover:from-[#00b4d8] hover:to-[#ff5d8f] transition-all duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-[#233554] rounded-full flex items-center justify-center text-white hover:bg-gradient-to-r hover:from-[#00b4d8] hover:to-[#ff5d8f] transition-all duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-[#8892b0] text-sm">
+                    &copy; <span data-ar="2023 AIW Group. جميع الحقوق محفوظة." data-en="2023 AIW Group. All rights reserved.">2023 AIW Group. جميع الحقوق محفوظة.</span>
+                </p>
+                <p class="text-[#00b4d8] text-sm" data-ar="ملف بروفايل الشركات متعدد الأنشطة – النسخة الاستراتيجية" data-en="Multi-Activity Company Profile – Strategic Version">
+                    ملف بروفايل الشركات متعدد الأنشطة – النسخة الاستراتيجية
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- الأزرار العائمة -->
+    <div class="fixed bottom-8 left-8 z-40 flex flex-col gap-4">
+        <button id="scrollTop" class="w-12 h-12 bg-gradient-to-br from-[#00b4d8] to-[#ff5d8f] rounded-full text-white shadow-lg flex items-center justify-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        <button id="languageFloat" class="w-12 h-12 bg-gradient-to-br from-[#ff5d8f] to-[#ff97b7] rounded-full text-white shadow-lg flex items-center justify-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <i class="fas fa-language"></i>
+        </button>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/language-switcher.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0a192f',
+                        'sky-blue': '#00b4d8',
+                        pink: '#ff5d8f',
+                        'light-navy': '#112240',
+                        'lightest-navy': '#233554',
+                        slate: '#8892b0',
+                        'light-slate': '#a8b2d1',
+                        'lightest-slate': '#ccd6f6',
+                        white: '#e6f1ff'
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+        
+        // معالجة نموذج الاتصال
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // هنا يمكنك إضافة كود إرسال النموذج إلى الخادم
+                    
+                    // عرض رسالة نجاح
+                    alert(currentLanguage === 'ar' ? 'شكراً لك على رسالتك! سنقوم بالرد عليك في أقرب وقت ممكن.' : 'Thank you for your message! We will respond to you as soon as possible.');
+                    
+                    // إعادة تعيين النموذج
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
